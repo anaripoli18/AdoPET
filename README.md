@@ -1,2 +1,2 @@
 # AdoPET
-sistema de adoção de animais com JAVA
+sistema de adoção de animais 
