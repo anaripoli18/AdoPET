@@ -20,10 +20,9 @@ public class PseudoDataBase {
     }
 
     public static User doesUserExist(String email) {
-        for(int i=0; i<= users.size(); i++) {
-            if(users.get(i) != null) 
-                if(users.get(i).getEmail().compareTo(email) == 0)
-                    return users.get(i);
+        for(User user :  users.values()) {
+            if(user.getEmail().equals(email)) 
+                    return user;
         }
         return null;
     }
