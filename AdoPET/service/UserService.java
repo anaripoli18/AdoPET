@@ -18,4 +18,15 @@ public class UserService {
     public boolean verificacaoSenha(User user, String password) {
         return user.getPassword().equals(password);
     }
+
+    
+    public boolean confirmarSeEmailEstaCorreto(String email) {
+        return email.contains("@");
+    }
+
+    
+
+
+
+
 }
