@@ -14,7 +14,8 @@ public class UserService {
         return doesUserExist;
     }
 
-    public boolean verificacaoSenha(User userAlvo, String password) {
-        return userAlvo.getPassword().equals(password);
+    //Verificação para saber de a senha fornecida é igual a senha armazenada do usuario
+    public boolean verificacaoSenha(User user, String password) {
+        return user.getPassword().equals(password);
     }
 }
