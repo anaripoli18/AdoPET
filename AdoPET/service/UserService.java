@@ -24,9 +24,17 @@ public class UserService {
         return email.contains("@");
     }
 
-    
+    public boolean confirmarSeSenhaTemNumero(String password) {
+        for(int i=0; i < password.length(); i++) {
+            if(Character.isDigit(password.charAt(i))) {
+                return true;
+            }
+        }
+        return false;
+    }
 
-
-
+    public boolean confirmarSeSenhaEstaCorreta(String password) {
+        return password.length() >= 8 && confirmarSeSenhaTemNumero(password);
+    }
 
 }
