@@ -37,4 +37,10 @@ public class UserService {
         return password.length() >= 8 && confirmarSeSenhaTemNumero(password);
     }
 
+    public void completarRegistro(User user) {
+        user.setId(PseudoDataBase.getLastId()+1);
+        
+        PseudoDataBase.addUser(user);
+    }
+
 }

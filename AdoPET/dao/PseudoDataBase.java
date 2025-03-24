@@ -1,6 +1,7 @@
 package AdoPET.dao;
 
 import java.util.HashMap;
+import java.util.Collections;
 
 import AdoPET.model.User;
 
@@ -26,4 +27,11 @@ public class PseudoDataBase {
         }
         return null;
     }
- }
+
+    public static int getLastId() {
+        if(users.isEmpty()) {
+            return 0;
+        }
+        return Collections.max(users.keySet());
+    } 
+}
