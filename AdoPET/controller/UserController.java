@@ -28,6 +28,7 @@ public class UserController implements Controller {
         loginOuRegister();
     }
 
+    //Método principal que apresenta um menu para o usuário contendo "login, registro ou sair"
     public void loginOuRegister() {
         loginText.entrandoNoSistema();
         setarEscolhaNumerica();
@@ -46,6 +47,7 @@ public class UserController implements Controller {
         };
     }
 
+    //Esses dois métodos pedem as informações (email e senha) do usuário
     protected String emailInput() {
         loginText.pedirEmail();
         return scanner.nextLine();
@@ -56,6 +58,7 @@ public class UserController implements Controller {
         return scanner.nextLine();
     }
 
+    //Método que verifica se o usuário existe
     private void autenticarEmailLogin() {
         String userEmail = emailInput();
 
@@ -72,6 +75,7 @@ public class UserController implements Controller {
         autenticarSenhaLogin(usuarioEncontrado);
     }
 
+    //Método que verificar se a senha está correta e se tiver, cria uma sessão para o usuário
     private void autenticarSenhaLogin(User usuarioEncontrado) {
         String senhaDoUsuario = senhaInput();
 
@@ -89,6 +93,7 @@ public class UserController implements Controller {
         }
     }
 
+    //Método que faz o registro do usuário a partir do email, verificando se ele está seguindo as normas
     private void autenticarEmailRegister() {
         String userEmail = emailInput();
         
@@ -115,6 +120,7 @@ public class UserController implements Controller {
         autenticarSenhaRegister(user);
     }
 
+    //Método que faz o registro da senha do usuário, verificando se está seguindo as normas
     private void autenticarSenhaRegister(User user) {
         loginText.senhaControle();
         String password = senhaInput();
@@ -133,6 +139,7 @@ public class UserController implements Controller {
         loginOuRegister();
     } 
 
+    //Método que retorna a página principal caso o usuário digite 0
     private boolean retornarPaginaLogin(String input) {
         if(input.compareTo("0") == 0) {
             loginText.limparConsole();
@@ -143,6 +150,7 @@ public class UserController implements Controller {
         return false;
     }
 
+    //Método que permite o usuário escolher uma opção no menu
     protected void setarEscolhaNumerica() {
         try {
             this.escolhaDeUsuario = Integer.parseInt(scanner.nextLine());
