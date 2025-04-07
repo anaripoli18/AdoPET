@@ -94,11 +94,31 @@ public class UserController implements Controller {
         boolean IsEmailCorrect = userService.confirmarSeEmailEstaCorreto(userEmail);
         if(!IsEmailCorrect) {
             loginText.mensagemDeErroGenerico("O email deve conter @!");
-            autenticarSenhaRegister();
+            autenticarEmailRegister();
 
             return;
         } 
+        User user = new User(0, "", userEmail, "", 0, null);
+        autenticarSenhaRegister(user);
     }
+
+    private void autenticarSenhaRegister(User user) {
+        loginText.senhaControle();
+        String password = senhaInput();
+
+        boolean IsPasswordCorrect = userService.confirmarSeSenhaEstaCorreta(password);
+        if(!IsPasswordCorrect) {
+            loginText.mensagemDeErroGenerico("Senha inválida!");
+            autenticarSenhaRegister(user);
+
+            return;
+        }
+
+        user.setPassword(password);
+
+        userService.completarRegistro(user);
+        longinOuRegister();
+    } 
 
 
 

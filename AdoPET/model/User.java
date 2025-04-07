@@ -14,13 +14,13 @@ public class User {
         TUTOR
     }
 
-    public User(int id, String nameUser, String email, String password, int phone, Types types) {
+    public User(int id, String nameUser, String email, String password, int phone, Types user) {
         this.id = id;
         this.nameUser = nameUser;
         this.email = email;
         this.password = password;
         this.phone = phone;
-        this.types = types;
+        this.types = user;
     }
 
     public void setId(int id) {
