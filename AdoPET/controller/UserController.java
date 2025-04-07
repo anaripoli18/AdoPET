@@ -76,7 +76,7 @@ public class UserController implements Controller {
         return false;
     }
 
-    private void autenticarUsuarioRegister() {
+    private void autenticarEmailRegister() {
         String userEmail = emailInput();
         
         if(retornarPaginaLogin(userEmail)) {
@@ -86,11 +86,20 @@ public class UserController implements Controller {
         User usuarioEncontrado = userService.verificacaoEmail(userEmail);
         if(usuarioEncontrado != null) {
             loginText.jaExiste();
-            autenticarUsuarioRegister();
+            autenticarEmailRegister();
 
             return;
         }
+
+        boolean IsEmailCorrect = userService.confirmarSeEmailEstaCorreto(userEmail);
+        if(!IsEmailCorrect) {
+            loginText.mensagemDeErroGenerico("O email deve conter @!");
+            autenticarSenhaRegister();
+
+            return;
+        } 
     }
+
 
 
     public void longinOuRegister() {
@@ -100,7 +109,7 @@ public class UserController implements Controller {
                 autenticarEmailLogin();
                 break;
             case 2:
-                autenticarUsuarioRegister();
+                autenticarEmailRegister();
                 break;
             case 3:
                 return;
