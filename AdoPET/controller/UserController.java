@@ -23,6 +23,23 @@ public class UserController implements Controller {
         scanner = new Scanner(System.in);
     }
 
+    public void longinOuRegister() {
+        loginText.entrandoNoSistema();
+        switch (escolhaDeUsuario) {
+            case 1:
+                autenticarEmailLogin();
+                break;
+            case 2:
+                autenticarEmailRegister();
+                break;
+            case 3:
+                return;
+            default:
+                longinOuRegister();
+                break;
+        };
+    }
+
     protected String emailInput() {
         loginText.pedirEmail();
         return scanner.nextLine();
@@ -64,16 +81,6 @@ public class UserController implements Controller {
             loginText.mensagemDeErroGenerico("Senha incorreta!");
             autenticarSenhaLogin(usuarioEncontrado);
         }
-    }
-
-    private boolean retornarPaginaLogin(String input) {
-        if(input.compareTo("0") == 0) {
-            loginText.limparConsole();
-            longinOuRegister();
-
-            return true;
-        }
-        return false;
     }
 
     private void autenticarEmailRegister() {
@@ -120,24 +127,16 @@ public class UserController implements Controller {
         longinOuRegister();
     } 
 
+    private boolean retornarPaginaLogin(String input) {
+        if(input.compareTo("0") == 0) {
+            loginText.limparConsole();
+            longinOuRegister();
 
-
-    public void longinOuRegister() {
-        loginText.entrandoNoSistema();
-        switch (escolhaDeUsuario) {
-            case 1:
-                autenticarEmailLogin();
-                break;
-            case 2:
-                autenticarEmailRegister();
-                break;
-            case 3:
-                return;
-            default:
-                longinOuRegister();
-                break;
-        };
+            return true;
+        }
+        return false;
     }
+
     @Override
     public void abrirView() {
         // TODO Auto-generated method stub
