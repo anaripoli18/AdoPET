@@ -23,8 +23,14 @@ public class UserController implements Controller {
         scanner = new Scanner(System.in);
     }
 
-    public void longinOuRegister() {
+    @Override
+    public void abrirView() {
+        loginOuRegister();
+    }
+
+    public void loginOuRegister() {
         loginText.entrandoNoSistema();
+        setarEscolhaNumerica();
         switch (escolhaDeUsuario) {
             case 1:
                 autenticarEmailLogin();
@@ -35,7 +41,7 @@ public class UserController implements Controller {
             case 3:
                 return;
             default:
-                longinOuRegister();
+                loginOuRegister();
                 break;
         };
     }
@@ -124,22 +130,24 @@ public class UserController implements Controller {
         user.setPassword(password);
 
         userService.completarRegistro(user);
-        longinOuRegister();
+        loginOuRegister();
     } 
 
     private boolean retornarPaginaLogin(String input) {
         if(input.compareTo("0") == 0) {
             loginText.limparConsole();
-            longinOuRegister();
+            loginOuRegister();
 
             return true;
         }
         return false;
     }
 
-    @Override
-    public void abrirView() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'abrirView'");
+    protected void setarEscolhaNumerica() {
+        try {
+            this.escolhaDeUsuario = Integer.parseInt(scanner.nextLine());
+        } catch (Exception e) {
+            loginText.mensagemDeErroGenerico("Escolha uma opção valida");
+        }
     }
 }
