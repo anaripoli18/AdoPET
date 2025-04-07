@@ -2,8 +2,8 @@ package AdoPET.controller;
 
 import java.util.Scanner;
 
-import AdoPET.dao.PseudoDataBase;
 import AdoPET.model.User;
+import AdoPET.server.Session;
 import AdoPET.service.UserService;
 import AdoPET.view.LoginText;
 import AdoPET.view.Profile;
@@ -74,6 +74,22 @@ public class UserController implements Controller {
             return true;
         }
         return false;
+    }
+
+    private void autenticarUsuarioRegister() {
+        String userEmail = emailInput();
+        
+        if(retornarPaginaLogin(userEmail)) {
+            return;
+        }
+
+        User usuarioEncontrado = userService.verificacaoEmail(userEmail);
+        if(usuarioEncontrado != null) {
+            loginText.jaExiste();
+            autenticarUsuarioRegister();
+
+            return;
+        }
     }
 
 
