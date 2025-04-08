@@ -55,8 +55,18 @@ public class UserController implements Controller {
         return scanner.nextLine();
     }
 
+    protected String nameInput() {
+        loginText.pedirNome();
+        return scanner.nextLine();
+    }
+
     protected String senhaInput() {
         loginText.pedirSenha();
+        return scanner.nextLine();
+    }
+
+    protected String phoneInput() {
+        loginText.pedirPhone();
         return scanner.nextLine();
     }
 
