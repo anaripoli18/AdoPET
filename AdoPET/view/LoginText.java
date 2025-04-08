@@ -13,9 +13,19 @@ public class LoginText extends Text {
         System.out.println("Email: ");
     }
 
+    public void pedirNome() {
+        System.out.println("Escreva seu nome. Para voltar, digite 0.");
+        System.out.println("Nome: ");
+    }
+
     public void pedirSenha() {
         System.out.println("Escreva sua senha. Para voltar, digite 0.");
         System.out.println("Senha: ");
+    }
+
+    public void pedirPhone() {
+        System.out.println("Escreva seu número de celular. Para voltar, digite 0.");
+        System.out.println("Número: ");
     }
 
     public void senhaControle() {
