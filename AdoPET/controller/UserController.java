@@ -131,7 +131,11 @@ public class UserController implements Controller {
 
             return;
         } 
-        User user = new User(0, "", userEmail, "", 0, null);
+
+        String nome = nameInput();
+        int telefone = Integer.parseInt(phoneInput());
+
+        User user = new User(0, nome, userEmail, "", telefone, null);
         autenticarSenhaRegister(user);
     }
 

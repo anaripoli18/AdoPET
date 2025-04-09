@@ -14,12 +14,11 @@ public class UserService {
         return doesUserExist;
     }
 
-    //Verificação para saber de a senha fornecida é igual a senha armazenada do usuario
+    //Verificação para saber se a senha fornecida é igual a senha armazenada do usuario
     public boolean verificacaoSenha(User user, String password) {
         return user.getPassword().equals(password);
     }
 
-    
     public boolean confirmarSeEmailEstaCorreto(String email) {
         return email.contains("@");
     }
